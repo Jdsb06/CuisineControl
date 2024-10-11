@@ -6,9 +6,9 @@
 
 <h2>Key Features:</h2>
 <ul>
-    <li><strong>Customer Interface:</strong> View menu items, select multiple items, place orders, and see the total cost in real-time.</li>
-    <li><strong>Admin Interface:</strong> Manage the restaurant menu by adding or removing items, and track customer orders, marking them as completed or pending.</li>
-    <li><strong>Order History Management:</strong> All orders are stored in CSV format, tracking details like order ID, customer name, items ordered, total cost, and order status.</li>
+    <li><strong>Customer Interface:</strong> View menu items, Select or remove item and quantity, place orders, view current order, view past orders, make the payment and logout</li>
+    <li><strong>Admin Interface:</strong> Manage the restaurant menu by adding or removing items, and track customer orders. </li>
+    <li><strong>Order History Management:</strong> All orders are stored in CSV format, tracking details like customer name, items ordered and total cost</li>
     <li><strong>Modular Design:</strong> The project is divided into different modules for managing menu items, order history, and user interaction.</li>
 </ul>
 

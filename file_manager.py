@@ -27,6 +27,15 @@ class CustomerManager:
             writer.writerow([username,password])
             """This method will write a single row in the csv file
                and the single row is the list that will be written"""
+
+    #The below method will check if the customer is using a previously used name
+
+    def invalid_username(self,username):
+        customers=self.read_customers()
+        for i in customers:
+            if i['username']== username:
+                return True
+        return False
             
     #The below method will convert the csv into a list format
 
@@ -50,7 +59,7 @@ class CustomerManager:
             # filling the customers list
             for r in reader:
                 if 'Username' in r and r['Username'].strip()!='':
-                    customers.append({"username":r['Username'],"password":r['Password']})
+                    customers.append({'username':r['Username'],'password':r['Password']})
                 else:
                     print("Invalid Username",r)
 
@@ -62,8 +71,8 @@ class CustomerManager:
 
         customers = self.read_customers()
 
-        for customer in customers:
-            if customer["username"]==username and customer["password"]==password:
+        for i in customers:
+            if i['username']==username and i['password']==password:
                 return True
 
         return False
@@ -164,6 +173,54 @@ class OrderManager:
                 display[name]=1
 
         return "\n".join([f'{item} x{number}' for item,number in display.items()])
+
+class MenuManager:
+
+    def __init__(self,file="menu.csv"):
+        self.file=file
+        self.items=[]
+
+    #The below method will convert the csv into a list format
+
+    def read_menu(self):
+        with open(self.file,mode='r') as file:
+            reader=csv.DictReader(file)
+            self.items=list(reader)
+
+    #The below method will be used to update the menu
+
+    def update_menu(self):
+        with open(self.file,mode='w',newline='') as file:
+            #mode='w' is used to overwrite
+
+            writer=csv.writer(file)
+            writer.writerow(['Name','Price'])   #Header Row
+
+            #Now filling the data rows
+            for i in self.items:
+                writer.writerow([i['Name'],i['Price']])
+
+    #The below method will be used to add a new item to the menu
+
+    def add_new_item(self,name,price):
+        self.items.append({'Name': name,'Price': price})
+        self.update_menu()
+
+    #The below method will be used to remove an old item from the menu
+
+    def remove_old_item(self,name):
+        self.items=list(filter(lambda x: x['Name'] != name, self.items))
+        self.update_menu()
+
+    #The below method will be used to display the current menu
+
+    def display(self):
+        return "\n".join([f"{i['Name']} - ₹{i['Price']}" for i in self.items])
+        
+        
+            
+            
+        
             
     
             

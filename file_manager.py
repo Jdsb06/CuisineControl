@@ -24,7 +24,7 @@ class CustomerManager:
                writer object which is used to write rows into the
                file which is passed as a parameter"""
 
-            writer.writerow([username,password])
+            writer.writerow([username, password])
             """This method will write a single row in the csv file
                and the single row is the list that will be written"""
 
@@ -172,7 +172,7 @@ class OrderManager:
             else:
                 display[name]=1
 
-        return "\n".join([f'{item} x{number}' for item,number in display.items()])
+        return "\n".join([f'{item}' for item,number in display.items()])
 
 class MenuManager:
 

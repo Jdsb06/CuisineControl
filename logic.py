@@ -39,7 +39,7 @@ class Customer:
             else:
                 cart[item]=1
 
-        return "\n".join([f'{item} x{number}' for item,number in cart])
+        return "\n".join([f'{item} x{number}' for item,number in cart.items()])
 
     #The below method will be used to find the total amount
 

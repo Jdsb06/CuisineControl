@@ -78,38 +78,100 @@ class UI:
                    fg="black").pack()
 
     #The below method will be used for login UI
+    # def login(self):
+    #     self.clear_all()
+    #     self.add_header()
+    #     #frames are used to hold other widgets
+    #     login_frame = tkt.Frame(self.root, bg="#e6f7ff", padx=25, pady=25)
+    #     login_frame.pack(fill='both', expand=True)
+    #     #padx is for horizontal padding, pady is for vertical padding
+    #     login_frame.pack()
+    #     #this .pack() method calls the login_frame to the window
+
+    #     #For username
+    #     tkt.Label(login_frame, text="Username", bg="#fffff0", font=self.label_font).pack()
+    #     #pack method was not used before in just a single line because it will return None but here it is not an issue
+    #     self.enter_username = tkt.Entry(login_frame, font=self.entry_font)
+    #     #Entry widget is used to accept single line text strings from a user
+    #     self.enter_username.pack(pady=(0, 15))
+    #     #padx is taken as (0,0) by default
+    #     #can't add pady in entry widget so add it via pack
+
+    #     #For password
+    #     tkt.Label(login_frame, text="Password", bg="#fffff0", font=self.label_font).pack()
+    #     self.enter_password = tkt.Entry(login_frame, show="*", font=self.entry_font)
+    #     self.enter_password.pack(pady=(0, 15))
+
+    #     #For buttons
+    #     tkt.Button(login_frame, text="Login as Customer", command=self.login_customer, font=self.button_font, bg="grey",
+    #                fg="black").pack()
+    #     tkt.Button(login_frame, text="Login as Admin", command=self.login_admin, font=self.button_font, bg="grey",
+    #                fg="black").pack()
+    #     tkt.Button(login_frame, text="Registration for New Customers", command=self.register_customer,
+    #                font=self.button_font, bg="grey", fg="black").pack()
+    #     self.add_footer()
+
     def login(self):
         self.clear_all()
-        self.add_header()
+        #self.add_header()
         #frames are used to hold other widgets
-        login_frame = tkt.Frame(self.root, bg="#e6f7ff", padx=25, pady=25)
-        login_frame.pack(fill='both', expand=True)
+        photo2=Image.open("/home/pranay-sanjan/Desktop/Tkinter GUI/images/bg1.png")
+        converted_image =ImageTk.PhotoImage(photo2)
+        label = ttk.Label(self.root,image=converted_image)
+        label.place(relheight=1,relwidth=1)
+        label.image = converted_image
+
+        #login_frame = tkt.Frame(self.root,bg="black", padx=25, pady=100)
+        #login_frame.pack(fill='both', expand=True)
         #padx is for horizontal padding, pady is for vertical padding
-        login_frame.pack()
+        #login_frame.pack()
+        
+        
         #this .pack() method calls the login_frame to the window
 
+        #self.check = tkt.Checkbutton(self.root,text="Show Password",font=("Bold",10),bg="#232323",fg="grey").place(x=960,y=465,anchor= "center")
+
         #For username
-        tkt.Label(login_frame, text="Username", bg="#fffff0", font=self.label_font).pack()
+        tkt.Label(self.root, text="Username :", bg="#232323",fg="white", font=self.label_font).place(x=750,y=350,anchor= "center")
         #pack method was not used before in just a single line because it will return None but here it is not an issue
-        self.enter_username = tkt.Entry(login_frame, font=self.entry_font)
+        self.enter_username = tkt.Entry(self.root, font=self.entry_font)
         #Entry widget is used to accept single line text strings from a user
-        self.enter_username.pack(pady=(0, 15))
+        self.enter_username.place(x=1000,y=350,anchor= "center")
         #padx is taken as (0,0) by default
         #can't add pady in entry widget so add it via pack
 
+        
+
         #For password
-        tkt.Label(login_frame, text="Password", bg="#fffff0", font=self.label_font).pack()
-        self.enter_password = tkt.Entry(login_frame, show="*", font=self.entry_font)
-        self.enter_password.pack(pady=(0, 15))
+        tkt.Label(self.root, text="Password  :", bg="#232323",fg="white", font=self.label_font).place(x=749,y=420,anchor= "center")
+        #self.enter_password = tkt.Entry(self.root, show="*", font=self.entry_font) # by default
+        #self.enter_password.place(x=1000,y=420,anchor= "center")
+
+        #self.check = tkt.Checkbutton(self.root,text="Show Password",font=("Bold",10),bg="#232323",fg="grey",variable=tkt.BooleanVar(),command=self.toggle_password).place(x=960,y=465,anchor= "center")
+        
+        self.enter_password = tkt.Entry(self.root, show="*", font=self.entry_font)
+
+        self.enter_password.place(x=1000,y=420,anchor= "center")
+
+        self.check = tkt.Checkbutton(self.root,text="Show Password",font=("Bold",10),bg="#232323",fg="grey",command=self.toggle_password).place(x=960,y=465,anchor= "center")
+
+
 
         #For buttons
-        tkt.Button(login_frame, text="Login as Customer", command=self.login_customer, font=self.button_font, bg="grey",
-                   fg="black").pack()
-        tkt.Button(login_frame, text="Login as Admin", command=self.login_admin, font=self.button_font, bg="grey",
-                   fg="black").pack()
-        tkt.Button(login_frame, text="Registration for New Customers", command=self.register_customer,
-                   font=self.button_font, bg="grey", fg="black").pack()
+        tkt.Button(self.root, text="Login as Customer",bg="black",fg="white", command=self.login_customer, font=self.button_font).place(relx=0.5,y=515,anchor= "center")
+        tkt.Button(self.root, text="Login as Admin", command=self.login_admin, font=self.button_font, bg="black",
+                   fg="white").place(relx=0.5,y=565,anchor= "center")
+        tkt.Button(self.root, text="Registration for New Customers", command=self.register_customer,
+                   font=self.button_font, bg="black", fg="white").place(relx=0.5,y=615,anchor= "center")
         self.add_footer()
+
+
+
+    def toggle_password(self):
+            if self.enter_password.cget("show")=="*":
+                self.enter_password.config(show="")  # Show password
+            else:
+                self.enter_password.config(show="*")  # Hide password
 
     #used to validate the customer login 
     def login_customer(self):

@@ -28,6 +28,16 @@ class Customer:
             if i["Name"]==item:
                 self.cart.append(i)
 
+    def sub_item(self, menu, item):
+        for i in menu.items:
+            if i["Name"] == item:
+                self.cart.remove(i)
+
+
+    def remove_item(self, menu, item_name):
+        """Remove all quantities of the item from the cart"""
+        self.cart = [i for i in self.cart if i['Name'] != item_name]
+
     #The below method will be used to view the cart
 
     def view_cart(self):
@@ -44,7 +54,8 @@ class Customer:
     #The below method will be used to find the total amount
 
     def total_amount(self):
-        return round(sum(float(i["Price"]) for i in self.cart),2)
+        return round(sum(float(i["Price"]) for i in self.cart), 2)
+
 
     #The below method will be used to process payment
 
@@ -65,7 +76,3 @@ class Admin:
     def manager(self,menu):
         print("Menu Manager")
         print(menu.display())
-
-
-
-

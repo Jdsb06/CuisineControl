@@ -1,4 +1,6 @@
-Chapati,20,Chapati.jpg
-Paneer,175,panner.jpg
-Paratha,30.0,Chapati.jpg
-Bhindi,150.0,Chapati.jpg
+#,Name,Price,ImagePath
+1,Chapati,20,Chapati.jpg
+2,Paneer,175,panner.jpg
+3,Paratha,30.0,PRANTHA.jpg
+4,Bhindi,150.0,bhindi.jpg
+

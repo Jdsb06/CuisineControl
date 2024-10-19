@@ -163,28 +163,53 @@ class UI:
             self.message("Invalid username or Password.", self.login)
 
     # The below UI will be for new customer registration
+    # def register_customer(self):
+    #     self.clear_all()
+    #     self.add_header()
+    #     registration_frame = tkt.Frame(self.root, bg="#e6f7ff", padx=25, pady=25)
+    #     registration_frame.pack(fill='both', expand=True)
+
+    #     # For username
+    #     tkt.Label(registration_frame, text="Enter Your Name", bg="#fffff0", font=self.label_font).pack()
+    #     self.register_username = tkt.Entry(registration_frame, font=self.entry_font)
+    #     self.register_username.pack(pady=(0, 15))
+
+    #     # For password
+    #     tkt.Label(registration_frame, text="Enter Password", bg="#fffff0", font=self.label_font).pack()
+    #     self.register_password = tkt.Entry(registration_frame, show='*', font=self.entry_font)
+    #     self.register_password.pack(pady=(0, 15))
+    #     # use self. to make them accessible across other classes
+
+    #     # For buttons
+    #     tkt.Button(registration_frame, text="Register Yourself", command=self.new_customer, font=self.button_font,
+    #                bg="grey", fg="black").pack()
+    #     tkt.Button(registration_frame, text="Back to Login Page", command=self.login, font=self.button_font, bg="grey",
+    #                fg="black").pack()
     def register_customer(self):
         self.clear_all()
         self.add_header()
-        registration_frame = tkt.Frame(self.root, bg="#e6f7ff", padx=25, pady=25)
-        registration_frame.pack(fill='both', expand=True)
+        photo2 = Image.open("bg1.png")
+        converted_image = ImageTk.PhotoImage(photo2)
+        message_frame = ttk.Label(self.root, image=converted_image)
+        message_frame.pack(fill='both', expand=True)
+        message_frame.image = converted_image
 
         # For username
-        tkt.Label(registration_frame, text="Enter Your Name", bg="#fffff0", font=self.label_font).pack()
-        self.register_username = tkt.Entry(registration_frame, font=self.entry_font)
+        tkt.Label(message_frame, text="Enter Your Name", bg="#232323",fg="white", font=self.label_font).pack()
+        self.register_username = tkt.Entry(message_frame, font=self.entry_font)
         self.register_username.pack(pady=(0, 15))
 
         # For password
-        tkt.Label(registration_frame, text="Enter Password", bg="#fffff0", font=self.label_font).pack()
-        self.register_password = tkt.Entry(registration_frame, show='*', font=self.entry_font)
+        tkt.Label(message_frame, text="Enter Password", bg="#232323",fg="white", font=self.label_font).pack()
+        self.register_password = tkt.Entry(message_frame, show='*', font=self.entry_font)
         self.register_password.pack(pady=(0, 15))
         # use self. to make them accessible across other classes
 
         # For buttons
-        tkt.Button(registration_frame, text="Register Yourself", command=self.new_customer, font=self.button_font,
-                   bg="grey", fg="black").pack()
-        tkt.Button(registration_frame, text="Back to Login Page", command=self.login, font=self.button_font, bg="grey",
-                   fg="black").pack()
+        tkt.Button(message_frame, text="Register Yourself", command=self.new_customer, font=self.button_font,
+                   bg="black", fg="white").pack()
+        tkt.Button(message_frame, text="Back to Login Page", command=self.login, font=self.button_font, bg="black",
+                   fg="white").pack()
 
     # registration logic for new customers
     def new_customer(self):

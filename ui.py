@@ -188,28 +188,31 @@ class UI:
     def register_customer(self):
         self.clear_all()
         self.add_header()
-        photo2 = Image.open("bg1.png")
-        converted_image = ImageTk.PhotoImage(photo2)
+        photo3 = Image.open("bg1.png")
+        converted_image = ImageTk.PhotoImage(photo3)
         message_frame = ttk.Label(self.root, image=converted_image)
         message_frame.pack(fill='both', expand=True)
         message_frame.image = converted_image
 
         # For username
-        tkt.Label(message_frame, text="Enter Your Name", bg="#232323",fg="white", font=self.label_font).pack()
+        tkt.Label(message_frame, text="Enter Your Name", bg="#232323",fg="white", font=self.label_font).place(x=730, y=350,
+                                                                                                      anchor="center")
         self.register_username = tkt.Entry(message_frame, font=self.entry_font)
-        self.register_username.pack(pady=(0, 15))
+        self.register_username.place(x=1000, y=350, anchor="center")
+
 
         # For password
-        tkt.Label(message_frame, text="Enter Password", bg="#232323",fg="white", font=self.label_font).pack()
+        tkt.Label(message_frame, text="Enter Password", bg="#232323",fg="white", font=self.label_font).place(x=725, y=420,
+                                                                                                       anchor="center")
         self.register_password = tkt.Entry(message_frame, show='*', font=self.entry_font)
-        self.register_password.pack(pady=(0, 15))
+        self.register_password.place(x=1000, y=420, anchor="center")
         # use self. to make them accessible across other classes
 
         # For buttons
         tkt.Button(message_frame, text="Register Yourself", command=self.new_customer, font=self.button_font,
-                   bg="black", fg="white").pack()
+                   bg="black", fg="white").place(relx=0.5, y=505, anchor="center")
         tkt.Button(message_frame, text="Back to Login Page", command=self.login, font=self.button_font, bg="black",
-                   fg="white").pack()
+                   fg="white").place(relx=0.5, y=555, anchor="center")
 
     # registration logic for new customers
     def new_customer(self):

@@ -576,12 +576,15 @@ class UI:
             if new_item_price.strip() == "" or new_item_price.isdigit() == False:
                 self.message("Enter a valid item price.", self.edit_menu)
             else:
-                new_item_price = float(new_item_price)
-                if new_item in [i['Name'] for i in self.menu.items]:
-                    self.message("This item is already in the Menu.", self.edit_menu)
+                if new_item_ImagePath.strip()=="":
+                    self.message("Enter a valid image name or add 'default_food.jpg'",self.edit_menu)
                 else:
-                    self.menu.add_new_item(new_item, new_item_price,new_item_ImagePath)
-                    self.message("Item has been succesfully added.", self.edit_menu)
+                    new_item_price = float(new_item_price)
+                    if new_item in [i['Name'] for i in self.menu.items]:
+                        self.message("This item is already in the Menu.", self.edit_menu)
+                    else:
+                        self.menu.add_new_item(new_item, new_item_price,new_item_ImagePath)
+                        self.message("Item has been succesfully added.", self.edit_menu)
 
     # for item remove logic admin
     def item_removal_admin(self):

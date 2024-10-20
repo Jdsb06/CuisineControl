@@ -19,4 +19,12 @@
 </ul>
 <h2>Team:</h2>
 <li><strong>Name:</strong> Jashandeep Singh Bedi (IMT2024022)</li>
+<li><strong>Name:</strong> Macwan Darell Suhrudkumar (IMT2024054)</li>
+<li><strong>Name:</strong> Kanneti Pranay Sanjan (IMT2024024)</li>
+<li><strong>Name:</strong> Siddharth Sivakumar (IMT2024017)</li>
+
+<h2>Commands to RUN Project:</h2>
+<li><strong>python3 main.py</li>
+
+
 

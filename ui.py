@@ -52,9 +52,9 @@ class UI:
     #         i.destroy()
 
     def clear_all(self):
-    if self.root is not None and hasattr(self.root, 'winfo_exists') and self.root.winfo_exists():
-        for widget in self.root.winfo_children():
-            widget.destroy()
+        if self.root is not None and hasattr(self.root, 'winfo_exists') and self.root.winfo_exists():
+            for widget in self.root.winfo_children():
+                widget.destroy()
 
     # used to ensure that the program keeps running
     
@@ -63,23 +63,23 @@ class UI:
     #     self.root.mainloop() # used to ensure that the window stays open
     
     def run(self):
-    try:
-        self.login()
-        self.root.mainloop()
-    except _tkinter.TclError:
-        print("Application window was closed.")
-
-    # The below method is used to ensure no pop-ups are there, and UI remains in the same window
-    def message(self, message, go_back_to):
-        self.clear_all()
-        photo2 = Image.open("bg1.png")
-        converted_image = ImageTk.PhotoImage(photo2)
-        message_frame = ttk.Label(self.root, image=converted_image)
-        message_frame.pack(fill='both', expand=True)
-        message_frame.image = converted_image
-
-        tkt.Label(message_frame, text=message, bg="#fffff0", font=self.label_font).pack(anchor="center")
-        tkt.Button(message_frame, text="Got it!", command=go_back_to, font=self.button_font, bg="#232323",
+        try:
+            self.login()
+            self.root.mainloop()
+        except _tkinter.TclError:
+            print("Application window was closed.")
+    
+        # The below method is used to ensure no pop-ups are there, and UI remains in the same window
+        def message(self, message, go_back_to):
+            self.clear_all()
+            photo2 = Image.open("bg1.png")
+            converted_image = ImageTk.PhotoImage(photo2)
+            message_frame = ttk.Label(self.root, image=converted_image)
+            message_frame.pack(fill='both', expand=True)
+            message_frame.image = converted_image
+    
+            tkt.Label(message_frame, text=message, bg="#fffff0", font=self.label_font).pack(anchor="center")
+            tkt.Button(message_frame, text="Got it!", command=go_back_to, font=self.button_font, bg="#232323",
                    fg="white").pack(anchor="center")
 
     # The below method is used to login

@@ -6,6 +6,7 @@ class Customer:
         self.password=password
         self.cart=[]
         self.customer_management=CustomerManager()  #for registering new customers, validation
+        self.cart_quantities={}
         
     #The below method will be used for the registration of the customer
 
@@ -62,6 +63,7 @@ class Customer:
     def process_payment(self):
         print(f'Total Billing Amount: ₹{self.total_amount()}')
         self.cart = [] #After payment is done, the cart is emptied
+        self.cart_quantities={}
 
 class Admin:
     def __init__(self,username="admin",password="admin"):

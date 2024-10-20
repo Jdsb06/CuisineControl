@@ -119,6 +119,8 @@ class UI:
     def login_customer(self):
         username = self.enter_username.get()
         password = self.enter_password.get()
+        self.customer.cart_quantites={}
+        self.customer.cart=[]
         if self.customer.login(username, password) is True:
             self.customer_window()
         else:
@@ -272,7 +274,9 @@ class UI:
         image_label.grid(row=row_index, column=1, padx=10, pady=5)
 
         # Create buttons for incrementing and decrementing quantity
-        quantity_var = tkt.IntVar(value=0)  # Initial quantity is 0
+        if item_name not in self.customer.cart_quantites:
+            self.customer.cart_quantites[item_name]=0
+        quantity_var = tkt.IntVar(value=self.customer.cart_quantites[item_name])  # Initial quantity is 0
 
         # Fix for unresolved reference: Make sure item is passed correctly in lambda
         inc_button = tkt.Button(
@@ -305,12 +309,14 @@ class UI:
 
     def update_quantity(self, item, quantity_var, delta, sigma):
         """Update the quantity of the item when the + or - button is pressed"""
+        item_name=item['Name']
         current_quantity = quantity_var.get()
         new_quantity = current_quantity + delta - sigma
 
         if new_quantity >= 0:  # Prevent negative quantities
+            self.customer.cart_quantites[item_name]=new_quantity
             quantity_var.set(new_quantity)
-
+            
             # Update the cart accordingly
             if delta > 0:  # Increment logic (+ button)
                 self.customer.add_item(self.menu, item['Name'])
@@ -325,7 +331,7 @@ class UI:
 
     # to add an item to the cart
 
-    def add_to_cart(self):
+    """def add_to_cart(self):
         item = self.cart_item.get()
         item_quantity = self.cart_item_quantity.get()
         if item.strip() == "":
@@ -335,10 +341,10 @@ class UI:
         else:
             for _ in range(int(item_quantity)):
                 self.customer.add_item(self.menu, item)
-            self.message(f'{item} x{item_quantity} has been added to your cart', self.customer_window)
+            self.message(f'{item} x{item_quantity} has been added to your cart', self.customer_window)"""
 
     # to view the cart
-    def view_cart(self):
+    """def view_cart(self):
         photo2 = Image.open("bg1.png")
         converted_image = ImageTk.PhotoImage(photo2)
         main_customer_frame = ttk.Label(self.root, image=converted_image)
@@ -346,10 +352,10 @@ class UI:
         main_customer_frame.image = converted_image
 
         self.message(self.customer.view_cart() if self.customer.view_cart() else "Your cart is empty",
-                     self.customer_window)
+                     self.customer_window)"""
 
     # ui to remove item from the cart
-    def remove_from_cart(self):
+    """def remove_from_cart(self):
         self.clear_all()
         remove_from_cart_frame = tkt.Frame(self.root, bg="#e6f7ff", padx=25, pady=25)
         remove_from_cart_frame.pack()
@@ -366,10 +372,10 @@ class UI:
         tkt.Button(remove_from_cart_frame, text="Remove item", command=self.item_removal, font=self.button_font,
                    bg="grey", fg="black").pack()
         tkt.Button(remove_from_cart_frame, text="Back to order", command=self.customer_window, font=self.button_font,
-                   bg="grey", fg="black").pack()
+                   bg="grey", fg="black").pack()"""
 
     # removal of item from the cart logic
-    def item_removal(self):
+    """def item_removal(self):
         item = self.item_to_remove.get()
         quantity = self.quantity_to_remove.get()
 
@@ -391,7 +397,7 @@ class UI:
                     for _ in range(int(quantity)):
                         self.customer.cart.remove(next(i for i in self.customer.cart if i[
                             'Name'] == item))  # next function gets next item from an iterator
-                    self.message(f'Succesfully removed {item} x{quantity} from your cart', self.remove_from_cart)
+                    self.message(f'Succesfully removed {item} x{quantity} from your cart', self.remove_from_cart)"""
 
                     # to display previous orders
 

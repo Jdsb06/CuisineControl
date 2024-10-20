@@ -61,7 +61,6 @@ class Customer:
     #The below method will be used to process payment
 
     def process_payment(self):
-        print(f'Total Billing Amount: ₹{self.total_amount()}')
         self.cart = [] #After payment is done, the cart is emptied
         self.cart_quantities={}
 

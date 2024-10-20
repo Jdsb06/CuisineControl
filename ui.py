@@ -69,8 +69,8 @@ class UI:
         except _tkinter.TclError:
             print("Application window was closed.")
     
-        # The below method is used to ensure no pop-ups are there, and UI remains in the same window
-        def message(self, message, go_back_to):
+    # The below method is used to ensure no pop-ups are there, and UI remains in the same window
+    def message(self, message, go_back_to):
             self.clear_all()
             photo2 = Image.open("bg1.png")
             converted_image = ImageTk.PhotoImage(photo2)

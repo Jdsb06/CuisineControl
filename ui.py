@@ -593,6 +593,44 @@ class UI:
         tkt.Button(main_admin_frame, text="Logout", command=self.admin_logout,font = ('Helvetica',30),bg="red", fg="black").place(relx = 0.05,rely = 0.9,anchor = 'center')
 
     # for edit menu admin
+    # def edit_menu(self):
+    #     self.clear_all()
+    #     self.add_header()
+    #     edit_menu_frame = tkt.Frame(self.root, bg="#fff700", padx=25, pady=25)
+    #     edit_menu_frame.pack()
+
+    #     photo2 = Image.open("bg1.png")
+    #     converted_image = ImageTk.PhotoImage(photo2)
+    #     edit_menu_frame = ttk.Label(self.root, image=converted_image)
+    #     edit_menu_frame.pack(fill='both', expand=True)
+    #     edit_menu_frame.image = converted_image
+
+    #     tkt.Label(edit_menu_frame, text="Menu Editor", bg="#fffff0", font=self.title_font).pack()
+
+    #     # for adding item
+    #     tkt.Label(edit_menu_frame, text="Add New item:", bg="#fffff0", font=self.label_font).pack()
+    #     tkt.Label(edit_menu_frame, text="Which item would you like to add?", bg="#fffff0", font=self.label_font).pack()
+    #     self.new_item = tkt.Entry(edit_menu_frame, font=self.entry_font)
+    #     self.new_item.pack(pady=(0, 15))
+    #     tkt.Label(edit_menu_frame, text="What will be the item price?", bg="#fffff0", font=self.label_font).pack()
+    #     self.new_item_price = tkt.Entry(edit_menu_frame, font=self.entry_font)
+    #     self.new_item_price.pack(pady=(0, 15))
+    #     tkt.Label(edit_menu_frame, text="Mention the Image path.", bg="#fffff0", font=self.label_font).pack()
+    #     self.new_item_ImagePath = tkt.Entry(edit_menu_frame, font=self.entry_font)
+    #     self.new_item_ImagePath.pack(pady=(0, 15))
+    #     tkt.Button(edit_menu_frame, command=self.item_add_admin, text="Add", bg="grey", fg="black").pack()
+
+    #     # for removing item
+    #     tkt.Label(edit_menu_frame, text="Remove an item:", bg="#fffff0", font=self.label_font).pack()
+    #     tkt.Label(edit_menu_frame, text="Which item would you like to remove?", bg="#fffff0",
+    #               font=self.label_font).pack()
+    #     self.remove_item = tkt.Entry(edit_menu_frame, font=self.entry_font)
+    #     self.remove_item.pack(pady=(0, 15))
+    #     tkt.Button(edit_menu_frame, command=self.item_removal_admin, text="Remove", bg="grey", fg="black").pack()
+
+    #     # for back navigation
+    #     tkt.Button(edit_menu_frame, command=self.admin_window, text="Back to home screen", bg="grey", fg="black").pack()
+
     def edit_menu(self):
         self.clear_all()
         self.add_header()
@@ -605,31 +643,31 @@ class UI:
         edit_menu_frame.pack(fill='both', expand=True)
         edit_menu_frame.image = converted_image
 
-        tkt.Label(edit_menu_frame, text="Menu Editor", bg="#fffff0", font=self.title_font).pack()
+        tkt.Label(edit_menu_frame, text="Menu Editor", bg="#232323",fg="white", font=self.title_font).pack()
 
         # for adding item
-        tkt.Label(edit_menu_frame, text="Add New item:", bg="#fffff0", font=self.label_font).pack()
-        tkt.Label(edit_menu_frame, text="Which item would you like to add?", bg="#fffff0", font=self.label_font).pack()
+        tkt.Label(edit_menu_frame, text="Add New item:", bg="#232323",fg="white", font=self.label_font).pack()
+        tkt.Label(edit_menu_frame, text="Which item would you like to add?", bg="#232323",fg="white", font=self.label_font).pack()
         self.new_item = tkt.Entry(edit_menu_frame, font=self.entry_font)
         self.new_item.pack(pady=(0, 15))
-        tkt.Label(edit_menu_frame, text="What will be the item price?", bg="#fffff0", font=self.label_font).pack()
+        tkt.Label(edit_menu_frame, text="What will be the item price?", bg="#232323",fg="white", font=self.label_font).pack()
         self.new_item_price = tkt.Entry(edit_menu_frame, font=self.entry_font)
         self.new_item_price.pack(pady=(0, 15))
-        tkt.Label(edit_menu_frame, text="Mention the Image path.", bg="#fffff0", font=self.label_font).pack()
+        tkt.Label(edit_menu_frame, text="Mention the Image path.", bg="#232323",fg="white", font=self.label_font).pack()
         self.new_item_ImagePath = tkt.Entry(edit_menu_frame, font=self.entry_font)
         self.new_item_ImagePath.pack(pady=(0, 15))
-        tkt.Button(edit_menu_frame, command=self.item_add_admin, text="Add", bg="grey", fg="black").pack()
+        tkt.Button(edit_menu_frame, command=self.item_add_admin, text="Add", bg="black", fg="white").pack()
 
         # for removing item
-        tkt.Label(edit_menu_frame, text="Remove an item:", bg="#fffff0", font=self.label_font).pack()
-        tkt.Label(edit_menu_frame, text="Which item would you like to remove?", bg="#fffff0",
+        tkt.Label(edit_menu_frame, text="Remove an item:", bg="#232323",fg="white", font=self.label_font).pack()
+        tkt.Label(edit_menu_frame, text="Which item would you like to remove?", bg="#232323",fg="white",
                   font=self.label_font).pack()
         self.remove_item = tkt.Entry(edit_menu_frame, font=self.entry_font)
         self.remove_item.pack(pady=(0, 15))
-        tkt.Button(edit_menu_frame, command=self.item_removal_admin, text="Remove", bg="grey", fg="black").pack()
+        tkt.Button(edit_menu_frame, command=self.item_removal_admin, text="Remove", bg="black", fg="white").pack()
 
         # for back navigation
-        tkt.Button(edit_menu_frame, command=self.admin_window, text="Back to home screen", bg="grey", fg="black").pack()
+        tkt.Button(edit_menu_frame, command=self.admin_window, text="Back to home screen", bg="black", fg="white",font = ('Helvetica',25)).place(relx=0.5,rely=0.85,anchor="center")
 
     # for item add logic admin
     def item_add_admin(self):

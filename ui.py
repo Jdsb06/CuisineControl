@@ -743,17 +743,56 @@ class UI:
         if selection == ():
             self.message("Select one customer.", self.select_customer)
         else:
-            # same logic as order history for customer
             customer_selection = self.customer_selector.get(selection)
-            previous_orders = self.order_management.read_customer_order(customer_selection)
-            previous_orders_display = ""
-            for order in previous_orders:
-                order_display = self.order_management.order_display(order['Items Ordered'])
-                total_cost = float(order['Total Cost'])
-                previous_orders_display += f'{order_display} / Total Cost = ₹{total_cost:.2f}\n'
+            self.clear_all()
+            self.add_header()
 
-            self.message(previous_orders_display if previous_orders_display != "" else "No oders to show",
-                         self.select_customer)
+            # Load and store the image persistently to avoid garbage collection issues
+            self.converted_image = ImageTk.PhotoImage(Image.open("bg1.png"))
+            order_history_frame = ttk.Label(self.root, image=self.converted_image)
+            order_history_frame.pack(fill='both', expand=True)  # Pack the frame first
+            order_history_frame.image = self.converted_image  # Keep reference alive
+
+            # Create a Treeview widget (table)
+            columns = ('order_number', 'items', 'total_cost')
+            tree = ttk.Treeview(order_history_frame, columns=columns, show='headings',  height=10)
+
+            # Define column headings
+            tree.heading('order_number', text='Order Number', anchor='center')
+            tree.heading('items', text='Items Ordered', anchor='center')
+            tree.heading('total_cost', text='Total Cost (₹)', anchor='center')
+
+            # Define column widths
+            tree.column('order_number', width=150, anchor='center')
+            tree.column('items', width=300, anchor='center')
+            tree.column('total_cost', width=150, anchor='center')
+
+            # Style the Treeview
+            tree_style = ttk.Style()
+            tree_style.configure("Treeview", rowheight=40, borderwidth=1, relief='solid', font=('Helvetica', 14))
+
+            # Pack the treeview inside the order_history_frame
+            tree.pack()
+
+            # Alternating row colors (simulating row lines)
+            tree.tag_configure('oddrow', background='#f2f2f2')  # Light grey for odd rows
+            tree.tag_configure('evenrow', background='#ffffff')  # White for even rows
+    
+            # Fetch order history data
+            previous_orders = self.order_management.read_customer_order(customer_selection)
+
+            # Insert data into the table
+            for index, order in enumerate(previous_orders, start=1):
+                items_ordered = self.order_management.order_display(order['Items Ordered'])
+                total_cost = float(order['Total Cost'])
+                if index % 2 == 0:
+                    tree.insert('', 'end', values=(index, items_ordered, f'₹{total_cost:.2f}'), tags=('evenrow',))
+                else:
+                    tree.insert('', 'end', values=(index, items_ordered, f'₹{total_cost:.2f}'), tags=('oddrow',))
+
+            # Add a back button
+            tkt.Button(order_history_frame, text="Back", command=self.select_customer, font=self.button_font, bg="#232323",
+                    fg="white").pack(pady=20)
 
     # to logout for the admin
     def admin_logout(self):

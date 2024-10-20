@@ -83,7 +83,7 @@ Phone: 0936258147", bg="navyblue", fg="lightblue",
         self.clear_all()
         # self.add_header()
         # frames are used to hold other widgets
-        photo2 = Image.open("bg1.png")
+        photo2 = Image.open("bg7.png")
         converted_image = ImageTk.PhotoImage(photo2)
         label = ttk.Label(self.root, image=converted_image)
         label.pack(fill='both', expand=True)

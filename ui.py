@@ -46,14 +46,27 @@ class UI:
         footer.pack(side="bottom", fill="x")
 
 
+    # def clear_all(self):
+    #     for i in self.root.winfo_children():
+    #         i.destroy()
+
     def clear_all(self):
-        for i in self.root.winfo_children():
-            i.destroy()
+    if self.root is not None and hasattr(self.root, 'winfo_exists') and self.root.winfo_exists():
+        for widget in self.root.winfo_children():
+            widget.destroy()
 
     # used to ensure that the program keeps running
+    
+    # def run(self):
+    #     self.login()
+    #     self.root.mainloop() # used to ensure that the window stays open
+    
     def run(self):
+    try:
         self.login()
-        self.root.mainloop()  # used to ensure that the window stays open
+        self.root.mainloop()
+    except _tkinter.TclError:
+        print("Application window was closed.")
 
     # The below method is used to ensure no pop-ups are there, and UI remains in the same window
     def message(self, message, go_back_to):

@@ -553,6 +553,26 @@ class UI:
                    fg="white").pack()
 
     # ui for admin
+    # def admin_window(self):
+    #     self.clear_all()
+    #     self.add_header()
+    #     main_admin_frame = tkt.Frame(self.root, bg="#fff700", padx=25, pady=25)
+    #     main_admin_frame.pack()
+
+    #     photo2 = Image.open("bg1.png")
+    #     converted_image = ImageTk.PhotoImage(photo2)
+    #     main_admin_frame = ttk.Label(self.root, image=converted_image)
+    #     main_admin_frame.pack(fill='both', expand=True)
+    #     main_admin_frame.image = converted_image
+
+    #     tkt.Label(main_admin_frame, text="Greetings to The Admin", bg="#fffff0", font=self.title_font).pack()
+    #     tkt.Button(main_admin_frame, text="Edit Menu", command=self.edit_menu,font = ('Helvetica',30), bg="grey", fg="black").pack()
+    #     tkt.Button(main_admin_frame, text="View Menu", command=self.view_menu_admin,font = ('Helvetica',30), bg="grey", fg="black").pack()
+    #     tkt.Button(main_admin_frame, text="View Customer Orders", command=self.select_customer,font = ('Helvetica',30), bg="grey",
+    #                fg="black").pack()
+    #     tkt.Button(main_admin_frame, text="Logout", command=self.admin_logout,font = ('Helvetica',30),bg="red", fg="black").place(relx = 0.05,rely = 0.9,anchor = 'center')
+
+
     def admin_window(self):
         self.clear_all()
         self.add_header()
@@ -565,11 +585,11 @@ class UI:
         main_admin_frame.pack(fill='both', expand=True)
         main_admin_frame.image = converted_image
 
-        tkt.Label(main_admin_frame, text="Greetings to The Admin", bg="#fffff0", font=self.title_font).pack()
-        tkt.Button(main_admin_frame, text="Edit Menu", command=self.edit_menu,font = ('Helvetica',30), bg="grey", fg="black").pack()
-        tkt.Button(main_admin_frame, text="View Menu", command=self.view_menu_admin,font = ('Helvetica',30), bg="grey", fg="black").pack()
-        tkt.Button(main_admin_frame, text="View Customer Orders", command=self.select_customer,font = ('Helvetica',30), bg="grey",
-                   fg="black").pack()
+        tkt.Label(main_admin_frame, text="Greetings to The Admin", bg="#232323",fg="white", font=('Helvetica',30,"bold")).pack(anchor="center")
+        tkt.Button(main_admin_frame, text="Edit Menu", command=self.edit_menu,font = ('Helvetica',25), bg="black", fg="white").place(relx=0.5,rely=0.3,anchor="center")
+        tkt.Button(main_admin_frame, text="View Menu", command=self.view_menu_admin,font = ('Helvetica',25), bg="black", fg="white").place(relx=0.5,rely=0.4,anchor="center")
+        tkt.Button(main_admin_frame, text="View Customer Orders", command=self.select_customer,font = ('Helvetica',25), bg="black",
+                   fg="white").place(relx=0.5,rely=0.5,anchor="center")
         tkt.Button(main_admin_frame, text="Logout", command=self.admin_logout,font = ('Helvetica',30),bg="red", fg="black").place(relx = 0.05,rely = 0.9,anchor = 'center')
 
     # for edit menu admin

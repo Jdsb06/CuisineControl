@@ -161,6 +161,7 @@ class UI:
                    bg="black", fg="white").place(relx=0.5, y=505, anchor="center")
         tkt.Button(message_frame, text="Back to Login Page", command=self.login, font=self.button_font, bg="black",
                    fg="white").place(relx=0.5, y=555, anchor="center")
+        self.add_footer
 
     # registration logic for new customers
     def new_customer(self):

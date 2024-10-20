@@ -484,6 +484,8 @@ class UI:
         self.order_management.new_order(self.customer.username, self.customer.cart)
         self.customer.process_payment()
         self.message("Your order has been placed.", self.customer_window)
+        self.customer.cart_quantites={}
+        self.customer.cart=[]
 
     # for customer logout
     def customer_logout(self):

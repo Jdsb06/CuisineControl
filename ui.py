@@ -18,11 +18,7 @@ class UI:
         screen_height = self.root.winfo_screenheight()
         self.root.geometry(f"{screen_width}x{screen_height}")
         self.root.title("CuisineControl")  # Creates the title
-        # self.root.attributes("-fullscreen", True)
         self.theme()
-
-        # self.root.bind("<Escape>", lambda event: self.root.attributes("-fullscreen", False))
-
         """This method has been created so that we don't need to adjust
            format multiple times"""
         self.run()
@@ -62,9 +58,6 @@ class UI:
     # The below method is used to ensure no pop-ups are there, and UI remains in the same window
     def message(self, message, go_back_to):
         self.clear_all()
-        # message_frame = tkt.Frame(self.root, bg="#e6f7ff", padx=25, pady=25)
-        # message_frame.pack()
-
         photo2 = Image.open("bg1.png")
         converted_image = ImageTk.PhotoImage(photo2)
         message_frame = ttk.Label(self.root, image=converted_image)
@@ -78,22 +71,12 @@ class UI:
     # The below method is used to login
     def login(self):
         self.clear_all()
-        # self.add_header()
         # frames are used to hold other widgets
         photo2 = Image.open("bg7.png")
         converted_image = ImageTk.PhotoImage(photo2)
         label = ttk.Label(self.root, image=converted_image)
         label.pack(fill='both', expand=True)
         label.image = converted_image
-
-        # login_frame = tkt.Frame(self.root,bg="black", padx=25, pady=100)
-        # login_frame.pack(fill='both', expand=True)
-        # padx is for horizontal padding, pady is for vertical padding
-        # login_frame.pack()
-
-        # this .pack() method calls the login_frame to the window
-
-        # self.check = tkt.Checkbutton(self.root,text="Show Password",font=("Bold",10),bg="#232323",fg="grey").place(x=960,y=465,anchor= "center")
 
         # For username
         tkt.Label(self.root, text="Username :", bg="#232323", fg="white", font=self.label_font).place(x=750, y=350,
@@ -108,10 +91,7 @@ class UI:
         # For password
         tkt.Label(self.root, text="Password  :", bg="#232323", fg="white", font=self.label_font).place(x=749, y=420,
                                                                                                        anchor="center")
-        # self.enter_password = tkt.Entry(self.root, show="*", font=self.entry_font) # by default
-        # self.enter_password.place(x=1000,y=420,anchor= "center")
-
-        # self.check = tkt.Checkbutton(self.root,text="Show Password",font=("Bold",10),bg="#232323",fg="grey",variable=tkt.BooleanVar(),command=self.toggle_password).place(x=960,y=465,anchor= "center")
+    
 
         self.enter_password = tkt.Entry(self.root, show="*", font=self.entry_font)
 
@@ -153,29 +133,6 @@ class UI:
         else:
             self.message("Invalid username or Password.", self.login)
 
-    # The below UI will be for new customer registration
-    # def register_customer(self):
-    #     self.clear_all()
-    #     self.add_header()
-    #     registration_frame = tkt.Frame(self.root, bg="#e6f7ff", padx=25, pady=25)
-    #     registration_frame.pack(fill='both', expand=True)
-
-    #     # For username
-    #     tkt.Label(registration_frame, text="Enter Your Name", bg="#fffff0", font=self.label_font).pack()
-    #     self.register_username = tkt.Entry(registration_frame, font=self.entry_font)
-    #     self.register_username.pack(pady=(0, 15))
-
-    #     # For password
-    #     tkt.Label(registration_frame, text="Enter Password", bg="#fffff0", font=self.label_font).pack()
-    #     self.register_password = tkt.Entry(registration_frame, show='*', font=self.entry_font)
-    #     self.register_password.pack(pady=(0, 15))
-    #     # use self. to make them accessible across other classes
-
-    #     # For buttons
-    #     tkt.Button(registration_frame, text="Register Yourself", command=self.new_customer, font=self.button_font,
-    #                bg="grey", fg="black").pack()
-    #     tkt.Button(registration_frame, text="Back to Login Page", command=self.login, font=self.button_font, bg="grey",
-    #                fg="black").pack()
     def register_customer(self):
         self.clear_all()
         self.add_header()
@@ -227,10 +184,9 @@ class UI:
     def customer_window(self):
         self.clear_all()
         self.add_header()
-        #
-        # # Create the main frame for the customer window
-        # main_customer_frame = tkt.Frame(self.root, bg="#e6f7ff", padx=25, pady=25)
-        # main_customer_frame.pack(fill='both', expand=True)
+        
+        # Create the main frame for the customer window
+  
         photo2 = Image.open("bg1.png")
         converted_image = ImageTk.PhotoImage(photo2)
         main_customer_frame = ttk.Label(self.root, image=converted_image)
@@ -243,7 +199,6 @@ class UI:
 
         # Create a frame for the table and images
         menu_frame = tkt.Frame(main_customer_frame, bg="#232323")
-        # menu_frame.pack(fill='both', expand=True)
         menu_frame.pack()
 
         # Use grid in menu_frame to hold the table layout
@@ -542,25 +497,6 @@ class UI:
                    fg="white").pack()
 
     # ui for admin
-    # def admin_window(self):
-    #     self.clear_all()
-    #     self.add_header()
-    #     main_admin_frame = tkt.Frame(self.root, bg="#fff700", padx=25, pady=25)
-    #     main_admin_frame.pack()
-
-    #     photo2 = Image.open("bg1.png")
-    #     converted_image = ImageTk.PhotoImage(photo2)
-    #     main_admin_frame = ttk.Label(self.root, image=converted_image)
-    #     main_admin_frame.pack(fill='both', expand=True)
-    #     main_admin_frame.image = converted_image
-
-    #     tkt.Label(main_admin_frame, text="Greetings to The Admin", bg="#fffff0", font=self.title_font).pack()
-    #     tkt.Button(main_admin_frame, text="Edit Menu", command=self.edit_menu,font = ('Helvetica',30), bg="grey", fg="black").pack()
-    #     tkt.Button(main_admin_frame, text="View Menu", command=self.view_menu_admin,font = ('Helvetica',30), bg="grey", fg="black").pack()
-    #     tkt.Button(main_admin_frame, text="View Customer Orders", command=self.select_customer,font = ('Helvetica',30), bg="grey",
-    #                fg="black").pack()
-    #     tkt.Button(main_admin_frame, text="Logout", command=self.admin_logout,font = ('Helvetica',30),bg="red", fg="black").place(relx = 0.05,rely = 0.9,anchor = 'center')
-
 
     def admin_window(self):
         self.clear_all()
@@ -582,44 +518,7 @@ class UI:
         tkt.Button(main_admin_frame, text="Logout", command=self.admin_logout,font = ('Helvetica',30),bg="red", fg="black").place(relx = 0.05,rely = 0.9,anchor = 'center')
 
     # for edit menu admin
-    # def edit_menu(self):
-    #     self.clear_all()
-    #     self.add_header()
-    #     edit_menu_frame = tkt.Frame(self.root, bg="#fff700", padx=25, pady=25)
-    #     edit_menu_frame.pack()
-
-    #     photo2 = Image.open("bg1.png")
-    #     converted_image = ImageTk.PhotoImage(photo2)
-    #     edit_menu_frame = ttk.Label(self.root, image=converted_image)
-    #     edit_menu_frame.pack(fill='both', expand=True)
-    #     edit_menu_frame.image = converted_image
-
-    #     tkt.Label(edit_menu_frame, text="Menu Editor", bg="#fffff0", font=self.title_font).pack()
-
-    #     # for adding item
-    #     tkt.Label(edit_menu_frame, text="Add New item:", bg="#fffff0", font=self.label_font).pack()
-    #     tkt.Label(edit_menu_frame, text="Which item would you like to add?", bg="#fffff0", font=self.label_font).pack()
-    #     self.new_item = tkt.Entry(edit_menu_frame, font=self.entry_font)
-    #     self.new_item.pack(pady=(0, 15))
-    #     tkt.Label(edit_menu_frame, text="What will be the item price?", bg="#fffff0", font=self.label_font).pack()
-    #     self.new_item_price = tkt.Entry(edit_menu_frame, font=self.entry_font)
-    #     self.new_item_price.pack(pady=(0, 15))
-    #     tkt.Label(edit_menu_frame, text="Mention the Image path.", bg="#fffff0", font=self.label_font).pack()
-    #     self.new_item_ImagePath = tkt.Entry(edit_menu_frame, font=self.entry_font)
-    #     self.new_item_ImagePath.pack(pady=(0, 15))
-    #     tkt.Button(edit_menu_frame, command=self.item_add_admin, text="Add", bg="grey", fg="black").pack()
-
-    #     # for removing item
-    #     tkt.Label(edit_menu_frame, text="Remove an item:", bg="#fffff0", font=self.label_font).pack()
-    #     tkt.Label(edit_menu_frame, text="Which item would you like to remove?", bg="#fffff0",
-    #               font=self.label_font).pack()
-    #     self.remove_item = tkt.Entry(edit_menu_frame, font=self.entry_font)
-    #     self.remove_item.pack(pady=(0, 15))
-    #     tkt.Button(edit_menu_frame, command=self.item_removal_admin, text="Remove", bg="grey", fg="black").pack()
-
-    #     # for back navigation
-    #     tkt.Button(edit_menu_frame, command=self.admin_window, text="Back to home screen", bg="grey", fg="black").pack()
-
+    
     def edit_menu(self):
         self.clear_all()
         self.add_header()

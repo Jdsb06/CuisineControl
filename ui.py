@@ -204,7 +204,7 @@ class UI:
         
         # Create the main frame for the customer window
   
-        photo2 = Image.open("bg1.png")
+        photo2 = Image.open("bg14.png")
         converted_image = ImageTk.PhotoImage(photo2)
         main_customer_frame = ttk.Label(self.root, image=converted_image)
         main_customer_frame.pack(fill='both', expand=True)
@@ -419,7 +419,7 @@ class UI:
         self.clear_all()
         self.add_header()
 
-        photo2 = Image.open("bg1.png")
+        photo2 = Image.open("bg14.png")
         converted_image = ImageTk.PhotoImage(photo2)
         order_history_frame = ttk.Label(self.root, image=converted_image)
         order_history_frame.pack(fill='both', expand=True)

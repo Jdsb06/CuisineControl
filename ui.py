@@ -45,19 +45,13 @@ class UI:
         header.pack(side="top", fill="x")
 
     def add_footer(self):
-        footer = tkt.Label(self.root, text="Footer Text", bg="navyblue", fg="lightblue",
+        footer = tkt.Label(self.root, text="26/C, Opposite of Infosys gate 1
+Electronics City Phase 1, Hosur Road
+Bengaluru - 560100","
+Phone: 0936258147", bg="navyblue", fg="lightblue",
                            font=("Helvetica", 20, "bold"), pady=20)
         footer.pack(side="bottom", fill="x")
 
-    def draw_rounded_rectangle(self, canvas, color):
-        x0, y0, x1, y1 = 0, 0, 400, 50  # Coordinates for the rectangle
-        radius = 20  # Radius for the rounded corners
-        canvas.create_arc(x0, y0, x0 + radius, y0 + radius, start=90, extent=90, fill=color, outline=color)
-        canvas.create_arc(x1 - radius, y0, x1, y0 + radius, start=0, extent=90, fill=color, outline=color)
-        canvas.create_arc(x0, y1 - radius, x0 + radius, y1, start=180, extent=90, fill=color, outline=color)
-        canvas.create_arc(x1 - radius, y1 - radius, x1, y1, start=270, extent=90, fill=color, outline=color)
-        canvas.create_rectangle(x0 + radius / 2, y0, x1 - radius / 2, y1, fill=color, outline=color)
-        canvas.create_rectangle(x0, y0 + radius / 2, x1, y1 - radius / 2, fill=color, outline=color)
 
     def clear_all(self):
         for i in self.root.winfo_children():
@@ -272,8 +266,6 @@ class UI:
         self.load_menu_from_csv(menu_frame)
 
         # Add buttons for cart management and order placement
-        tkt.Button(main_customer_frame, text="View Cart", command=self.view_cart, font=self.button_font, bg="#232323",
-                   fg="white").pack(pady=20)
         tkt.Button(main_customer_frame, text="Order History", command=self.order_history, font=self.button_font,
                    bg="#232323", fg="white").pack()
         tkt.Button(main_customer_frame, text="Place Order-->", command=self.place_order, font=("Helvetica", 30),

@@ -45,11 +45,8 @@ class UI:
         header.pack(side="top", fill="x")
 
     def add_footer(self):
-        footer = tkt.Label(self.root, text="26/C, Opposite of Infosys gate 1
-Electronics City Phase 1, Hosur Road
-Bengaluru - 560100","
-Phone: 0936258147", bg="navyblue", fg="lightblue",
-                           font=("Helvetica", 20, "bold"), pady=20)
+        footer = tkt.Label(self.root, text="26/C, Opposite of Infosys gate 1 Electronics City Phase 1, Hosur Road Bengaluru - 560100 Phone: 0936258147", 
+                           bg="navyblue", fg="lightblue",font = ("Helvetica", 20, "bold"), pady = 20)
         footer.pack(side="bottom", fill="x")
 
 

@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 from tkinter import font
 from file_manager import OrderManager, CustomerManager, MenuManager
 import csv
+import _tkinter
 
 
 class UI:

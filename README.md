@@ -17,3 +17,6 @@
     <li><strong>Python</strong> (Tkinter for GUI)</li>
     <li><strong>CSV</strong> (for storing order data)</li>
 </ul>
+<h2>Team:</h2>
+<li><strong>Name:</strong> Jashandeep Singh Bedi (IMT2024022)</li>
+

@@ -194,16 +194,16 @@ class MenuManager:
             #mode='w' is used to overwrite
 
             writer=csv.writer(file)
-            writer.writerow(['Name','Price'])   #Header Row
+            writer.writerow(['Name','Price','ImagePath'])   #Header Row
 
             #Now filling the data rows
             for i in self.items:
-                writer.writerow([i['Name'],i['Price']])
+                writer.writerow([i['Name'],i['Price'],i['ImagePath']])
 
     #The below method will be used to add a new item to the menu
 
-    def add_new_item(self,name,price):
-        self.items.append({'Name': name,'Price': price})
+    def add_new_item(self,name,price,ImagePath):
+        self.items.append({'Name': name,'Price': price,'ImagePath':ImagePath})
         self.update_menu()
 
     #The below method will be used to remove an old item from the menu

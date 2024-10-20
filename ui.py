@@ -557,13 +557,20 @@ class UI:
         self.clear_all()
         self.add_header()
         main_admin_frame = tkt.Frame(self.root, bg="#fff700", padx=25, pady=25)
+        main_admin_frame.pack()
+
+        photo2 = Image.open("bg1.png")
+        converted_image = ImageTk.PhotoImage(photo2)
+        main_admin_frame = ttk.Label(self.root, image=converted_image)
         main_admin_frame.pack(fill='both', expand=True)
-        tkt.Label(main_admin_frame, text="Greetings to The Admin", bg="#f9affa", font=self.title_font).pack()
-        tkt.Button(main_admin_frame, text="Edit Menu", command=self.edit_menu, bg="grey", fg="black").pack()
-        tkt.Button(main_admin_frame, text="View Menu", command=self.view_menu_admin, bg="grey", fg="black").pack()
-        tkt.Button(main_admin_frame, text="View Customer Orders", command=self.select_customer, bg="grey",
+        main_admin_frame.image = converted_image
+
+        tkt.Label(main_admin_frame, text="Greetings to The Admin", bg="#fffff0", font=self.title_font).pack()
+        tkt.Button(main_admin_frame, text="Edit Menu", command=self.edit_menu,font = ('Helvetica',30), bg="grey", fg="black").pack()
+        tkt.Button(main_admin_frame, text="View Menu", command=self.view_menu_admin,font = ('Helvetica',30), bg="grey", fg="black").pack()
+        tkt.Button(main_admin_frame, text="View Customer Orders", command=self.select_customer,font = ('Helvetica',30), bg="grey",
                    fg="black").pack()
-        tkt.Button(main_admin_frame, text="Logout", command=self.admin_logout, bg="grey", fg="black").pack()
+        tkt.Button(main_admin_frame, text="Logout", command=self.admin_logout,font = ('Helvetica',30),bg="red", fg="black").place(relx = 0.05,rely = 0.9,anchor = 'center')
 
     # for edit menu admin
     def edit_menu(self):
@@ -571,21 +578,31 @@ class UI:
         self.add_header()
         edit_menu_frame = tkt.Frame(self.root, bg="#fff700", padx=25, pady=25)
         edit_menu_frame.pack()
-        tkt.Label(edit_menu_frame, text="Menu Editor", bg="#f9affa", font=self.title_font).pack()
+
+        photo2 = Image.open("bg1.png")
+        converted_image = ImageTk.PhotoImage(photo2)
+        edit_menu_frame = ttk.Label(self.root, image=converted_image)
+        edit_menu_frame.pack(fill='both', expand=True)
+        edit_menu_frame.image = converted_image
+
+        tkt.Label(edit_menu_frame, text="Menu Editor", bg="#fffff0", font=self.title_font).pack()
 
         # for adding item
-        tkt.Label(edit_menu_frame, text="Add New item:", bg="#f9affa", font=self.label_font).pack()
-        tkt.Label(edit_menu_frame, text="Which item would you like to add?", bg="#f9affa", font=self.label_font).pack()
+        tkt.Label(edit_menu_frame, text="Add New item:", bg="#fffff0", font=self.label_font).pack()
+        tkt.Label(edit_menu_frame, text="Which item would you like to add?", bg="#fffff0", font=self.label_font).pack()
         self.new_item = tkt.Entry(edit_menu_frame, font=self.entry_font)
         self.new_item.pack(pady=(0, 15))
-        tkt.Label(edit_menu_frame, text="What will be the item price?", bg="#f9affa", font=self.label_font).pack()
+        tkt.Label(edit_menu_frame, text="What will be the item price?", bg="#fffff0", font=self.label_font).pack()
         self.new_item_price = tkt.Entry(edit_menu_frame, font=self.entry_font)
         self.new_item_price.pack(pady=(0, 15))
+        tkt.Label(edit_menu_frame, text="Mention the Image path.", bg="#fffff0", font=self.label_font).pack()
+        self.new_item_ImagePath = tkt.Entry(edit_menu_frame, font=self.entry_font)
+        self.new_item_ImagePath.pack(pady=(0, 15))
         tkt.Button(edit_menu_frame, command=self.item_add_admin, text="Add", bg="grey", fg="black").pack()
 
         # for removing item
-        tkt.Label(edit_menu_frame, text="Remove an item:", bg="#f9affa", font=self.label_font).pack()
-        tkt.Label(edit_menu_frame, text="Which item would you like to remove?", bg="#f9affa",
+        tkt.Label(edit_menu_frame, text="Remove an item:", bg="#fffff0", font=self.label_font).pack()
+        tkt.Label(edit_menu_frame, text="Which item would you like to remove?", bg="#fffff0",
                   font=self.label_font).pack()
         self.remove_item = tkt.Entry(edit_menu_frame, font=self.entry_font)
         self.remove_item.pack(pady=(0, 15))
@@ -598,6 +615,7 @@ class UI:
     def item_add_admin(self):
         new_item = self.new_item.get()
         new_item_price = self.new_item_price.get()
+        new_item_ImagePath = self.new_item_ImagePath.get()
 
         if new_item.strip() == "":
             self.message("Enter a valid item name.", self.edit_menu)
@@ -609,7 +627,7 @@ class UI:
                 if new_item in [i['Name'] for i in self.menu.items]:
                     self.message("This item is already in the Menu.", self.edit_menu)
                 else:
-                    self.menu.add_new_item(new_item, new_item_price)
+                    self.menu.add_new_item(new_item, new_item_price,new_item_ImagePath)
                     self.message("Item has been succesfully added.", self.edit_menu)
 
     # for item remove logic admin
@@ -638,7 +656,14 @@ class UI:
         self.add_header()
         select_customer_frame = tkt.Frame(self.root, bg="#fff700", padx=25, pady=25)
         select_customer_frame.pack()
-        tkt.Label(select_customer_frame, text="Select whose Orders you want to see", bg="#f9affa",
+
+        photo2 = Image.open("bg1.png")
+        converted_image = ImageTk.PhotoImage(photo2)
+        select_customer_frame = ttk.Label(self.root, image=converted_image)
+        select_customer_frame.pack(fill='both', expand=True)
+        select_customer_frame.image = converted_image
+
+        tkt.Label(select_customer_frame, text="Select whose Orders you want to see", bg="#fffff0",
                   font=self.label_font).pack()
 
         # making the box which contains the list of customers to select from using listbox widget
@@ -678,7 +703,14 @@ class UI:
         self.add_header()
         logout_frame = tkt.Frame(self.root, bg="#fff700", padx=25, pady=25)
         logout_frame.pack()
-        tkt.Label(logout_frame, text="Are you sure you want to logout?", bg="#f9affa", font=self.label_font).pack()
+
+        photo2 = Image.open("bg1.png")
+        converted_image = ImageTk.PhotoImage(photo2)
+        logout_frame = ttk.Label(self.root, image=converted_image)
+        logout_frame.pack(fill='both', expand=True)
+        logout_frame.image = converted_image
+
+        tkt.Label(logout_frame, text="Are you sure you want to logout?", bg="#fffff0", font=self.label_font).pack()
         tkt.Button(logout_frame, text="Yes", command=self.login, font=self.button_font, bg="grey", fg="black").pack()
         tkt.Button(logout_frame, text="No", command=self.admin_window, font=self.button_font, bg="grey",
                    fg="black").pack()
